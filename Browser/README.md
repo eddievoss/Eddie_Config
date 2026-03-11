@@ -1,7 +1,7 @@
 # LibreWolf / Chrome
 ### Extensions:
   - Vimium
+  - Vimium New Tab Page
   - uBlock Origin
   - Dark Reader
-  - Custom New Tab
   - Auto-Group Tabs
