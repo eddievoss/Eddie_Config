@@ -1,171 +1,68 @@
 [
-  // VS CODE TOOLS
-  // Open the Explorer view
-  {
-    "key": "shift+alt+e",
-    "command": "workbench.view.explorer"
-  },
-  // Open the Search view
-  {
-    "key": "shift+alt+f",
-    "command": "workbench.view.search"
-  },
-  // Open the Source Control view
-  {
-    "key": "shift+alt+g",
-    "command": "workbench.view.scm"
-  }, // Open the Run & Debug view
-  {
-    "key": "shift+alt+d",
-    "command": "workbench.view.debug"
-  },
-  // Open the Extensions view
-  {
-    "key": "shift+alt+x",
-    "command": "workbench.view.extensions"
-  },
-  // Toggle the Activity Bar
-  {
-    "key": "shift+alt+a",
-    "command": "workbench.action.toggleActivityBarVisibility"
-  },
-  // Toggle the integrated Terminal
-  {
-    "key": "shift+alt+t",
-    "command": "workbench.action.terminal.toggleTerminal"
-  },
-  // Toggle the Menu Bar
-  {
-    "key": "shift+alt+m",
-    "command": "workbench.action.toggleMenuBar"
-  },
-  // Toggle the Primary Side Bar
-  {
-    "key": "shift+alt+p",
-    "command": "workbench.action.toggleSidebarVisibility"
-  },
-  // Toggle the Status Bar
-  {
-    "key": "shift+alt+s",
-    "command": "workbench.action.toggleStatusbarVisibility"
-  },
-  // Toggle the Bread Crumbs
-  {
-    "key": "shift+alt+b",
-    "command": "breadcrumbs.toggle"
-  },
-  // Toggle Zen Mode
-  {
-    "key": "shift+alt+z",
-    "command": "workbench.action.toggleZenMode"
-  },
-  // NAVIGATION
-  // Navigate to the next tab
-  {
-    "key": "ctrl+tab",
-    "command": "workbench.action.nextEditor"
-  },
-  // Navigate to the previous tab
-  {
-    "key": "ctrl+shift+tab",
-    "command": "workbench.action.previousEditor"
-  },
-  // Close the current tab
-  {
-    "key": "alt+x",
-    "command": "workbench.action.closeActiveEditor"
-  },
-  // Center after page up
+  // Sidebars
+  { "key": "shift+alt+e", "command": "workbench.view.explorer" },
+  { "key": "shift+alt+f", "command": "workbench.view.search" },
+  { "key": "shift+alt+g", "command": "workbench.view.scm" },
+  { "key": "shift+alt+d", "command": "workbench.view.debug" },
+  { "key": "shift+alt+x", "command": "workbench.view.extensions" },
+  { "key": "shift+alt+r", "command": "workbench.view.remote" },
+
+  // Toggles
+  { "key": "shift+alt+a", "command": "workbench.action.toggleActivityBarVisibility" },
+  { "key": "shift+alt+t", "command": "workbench.action.terminal.toggleTerminal" },
+  { "key": "shift+alt+m", "command": "workbench.action.toggleMenuBar" },
+  { "key": "shift+alt+p", "command": "workbench.action.toggleSidebarVisibility" },
+  { "key": "shift+alt+s", "command": "workbench.action.toggleStatusbarVisibility" },
+  { "key": "shift+alt+b", "command": "breadcrumbs.toggle" },
+  { "key": "shift+alt+z", "command": "workbench.action.toggleZenMode" },
+  { "key": "shift+alt+c", "command": "workbench.action.toggleAuxiliaryBar" },
+  { "key": "ctrl+alt+b",  "command": "-workbench.action.toggleAuxiliaryBar" },
+
+  // Tabs
+  { "key": "ctrl+tab",       "command": "workbench.action.nextEditor" },
+  { "key": "ctrl+shift+tab", "command": "workbench.action.previousEditor" },
+  { "key": "alt+x",          "command": "workbench.action.closeActiveEditor" },
+
+  // Terminal
+  { "key": "ctrl+shift+a", "command": "workbench.action.terminal.focusNext",     "when": "terminalFocus" },
+  { "key": "ctrl+shift+b", "command": "workbench.action.terminal.focusPrevious", "when": "terminalFocus" },
+  { "key": "ctrl+shift+n", "command": "workbench.action.terminal.new",           "when": "terminalFocus" },
+  { "key": "ctrl+shift+c", "command": "workbench.action.terminal.kill",          "when": "terminalFocus" },
+
+  // File Explorer
+  { "key": "ctrl+e", "command": "workbench.files.action.focusFilesExplorer", "when": "editorTextFocus" },
+  { "key": "n",      "command": "explorer.newFile", "when": "filesExplorerFocus && !inputFocus" },
+  { "key": "r",      "command": "renameFile",       "when": "filesExplorerFocus && !inputFocus" },
+
+  // Debugger
+  { "key": "right",     "command": "workbench.action.debug.stepOver",  "when": "inDebugMode && !editorTextFocus" },
+  { "key": "down",      "command": "workbench.action.debug.stepInto",  "when": "inDebugMode && !editorTextFocus" },
+  { "key": "up",        "command": "workbench.action.debug.stepOut",   "when": "inDebugMode && !editorTextFocus" },
+  { "key": "enter",     "command": "workbench.action.debug.continue",  "when": "inDebugMode && !editorTextFocus" },
+  { "key": "backspace", "command": "workbench.action.debug.restart",   "when": "inDebugMode && !editorTextFocus" },
+  { "key": "escape",    "command": "workbench.action.debug.stop",      "when": "inDebugMode && !editorTextFocus" },
+
+  // Scrolling (half-page + center cursor)
   {
     "key": "pageup",
     "command": "runCommands",
     "args": {
       "commands": [
-        {
-          "command": "editorScroll",
-          "args": {
-            "to": "up",
-            "by": "halfPage",
-            "revealCursor": false
-          }
-        },
-        {
-          "command": "cursorMove",
-          "args": {
-            "to": "viewPortCenter"
-          }
-        }
+        { "command": "editorScroll", "args": { "to": "up", "by": "halfPage", "revealCursor": false } },
+        { "command": "cursorMove", "args": { "to": "viewPortCenter" } }
       ]
     },
     "when": "editorTextFocus"
   },
-  // Center after page down
   {
     "key": "pagedown",
     "command": "runCommands",
     "args": {
       "commands": [
-        {
-          "command": "editorScroll",
-          "args": {
-            "to": "down",
-            "by": "halfPage",
-            "revealCursor": false
-          }
-        },
-        {
-          "command": "cursorMove",
-          "args": {
-            "to": "viewPortCenter"
-          }
-        }
+        { "command": "editorScroll", "args": { "to": "down", "by": "halfPage", "revealCursor": false } },
+        { "command": "cursorMove", "args": { "to": "viewPortCenter" } }
       ]
     },
     "when": "editorTextFocus"
   },
-  // TERMINAL
-  // Focus the next terminal (when terminal is focused)
-  {
-    "key": "ctrl+shift+a",
-    "command": "workbench.action.terminal.focusNext",
-    "when": "terminalFocus"
-  },
-  // Focus the previous terminal (when terminal is focused)
-  {
-    "key": "ctrl+shift+b",
-    "command": "workbench.action.terminal.focusPrevious",
-    "when": "terminalFocus"
-  },
-  // Create a new terminal (when terminal is focused)
-  {
-    "key": "ctrl+shift+n",
-    "command": "workbench.action.terminal.new",
-    "when": "terminalFocus"
-  },
-  // Kill the focused terminal (when terminal is focused)
-  {
-    "key": "ctrl+shift+c",
-    "command": "workbench.action.terminal.kill",
-    "when": "terminalFocus"
-  },
-  // FILETREE
-  // Focus the Files Explorer (when editor text is focused)
-  {
-    "key": "ctrl+e",
-    "command": "workbench.files.action.focusFilesExplorer",
-    "when": "editorTextFocus"
-  },
-  // Create a new file in the Explorer (when Explorer is focused)
-  {
-    "key": "n",
-    "command": "explorer.newFile",
-    "when": "filesExplorerFocus && !inputFocus"
-  },
-  // Rename a file in the Explorer (when Explorer is focused)
-  {
-    "key": "r",
-    "command": "renameFile",
-    "when": "filesExplorerFocus && !inputFocus"
-  },
-  
 ]
